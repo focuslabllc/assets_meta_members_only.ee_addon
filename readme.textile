@@ -1,0 +1,35 @@
+h1. Assets Meta: Members Only
+
+This extension is used directly with "Pixel & Tonic's":http://pixelandtonic.com Assets module. It adds a new meta field in the HUD to define if an asset is intended for members only or not.
+
+h3. Requirements
+
+* ExpressionEngine 2.1.3 or later
+* "Assets":http://pixelandtonic.com/assets 1.1 or later
+
+h3. Installation
+
+* Upload the @assets_meta_members_only@ folder to @system/expressionengine/third_party/@
+* Enable Assets Meta: Members Only in Add-Ons -> Extensions
+
+h3. Usage
+
+Upon installation, each of your files’ HUDs will get a new “Members Only?” field. The options are simply "Yes|No" with respective values of "y|n"
+
+You can filter your Assets fields to only show files which are or aren't "members only" by adding @members_only="y|n"@ to your opening Assets field tag. Note that simply setting an asset's meta tag to "Yes" won't hide the asset from your users. You will still need to additional logic to your templates for this.
+
+*This field value defaults to no.*
+
+h3. Sample code:
+
+*Member Only Assets*
+<pre><code>{if logged_in}
+  {my_assets_field members_only='y'}
+    {filename}
+  {/my_assets_field}
+{/if}</code></pre>
+
+*Public Only Assets*
+<pre><code>{my_assets_field members_only='n'}
+  {filename}
+{/my_assets_field}</code></pre>
